@@ -1,0 +1,8 @@
+{
+  "preset": [["env"], "react"],
+  "env": {
+    "test": {
+      "preset": [["env"], "react"]
+    }
+  }
+}
