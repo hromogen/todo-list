@@ -1,6 +1,7 @@
 import React from 'react';
-import {counter, createStore, addCounter, removeCounter, incrementCounter} from './lib';
-//import {  } from 'redux';
+import {counter, addCounter, removeCounter, incrementCounter} from './lib';
+
+import { createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import './index.css';
 

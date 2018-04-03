@@ -1,5 +1,5 @@
 /*----------------------------------------------Counter set of functions-------------------------------------*/
-
+import { combineReducers } from 'redux';
 export const counter = (state = 0, action) => {
     switch (action.type){
         case 'INCREMENT':
@@ -15,28 +15,6 @@ export const addCounter = list => [ ...list, 0 ];
 export const removeCounter = (list, index) => list.filter((_it, ind) => ind !== index);
 
 export const incrementCounter = (list, index) => Array.from(list, (it, ind) => it += Number(ind === index));
-
-/*----------------------------------------------Redux store set of functions------------------------------------*/
-
-export const createStore = reducer => {
-    const listeners = [],
-        dispatch = action => {
-            state = reducer(state, action);
-            listeners.forEach( listener => listener() )
-        };
-    let state;
-    dispatch({});
-    return {
-        getState: () => state,
-        subscribe: listener => {
-            listeners.push(listener);
-            return () => listeners.filter(l => l !== listener)
-        },
-        dispatch: dispatch,
-    }
-};
-
-/*----------------------------------------------Todo list set of functions----------------------------------------*/
 
 const todo = (state = {}, action) => {
     switch(action.type){
@@ -74,16 +52,7 @@ export const visibilityFilter = ( state = 'SHOW_ALL', action ) => {
 
 /*-------------------------------------------------Total app reducer----------------------------------------------*/
 
-export const todoApp = (state = {}, action) => {
-    return {
-        todos: todos(
-            state.todos,
-            action
-        ),
-        visibilityFilter: visibilityFilter(
-            state.visibilityFilter,
-            action
-        )
-    }
-};
-
+export const todoApp = combineReducers({
+    todos,
+    visibilityFilter
+});
