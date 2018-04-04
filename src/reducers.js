@@ -1,5 +1,6 @@
 /*----------------------------------------------Counter set of functions-------------------------------------*/
 import { combineReducers } from 'redux';
+import { createStore } from 'redux';
 export const counter = (state = 0, action) => {
     switch (action.type){
         case 'INCREMENT':
@@ -56,3 +57,5 @@ export const todoApp = combineReducers({
     todos,
     visibilityFilter
 });
+
+export const theStore = createStore(todoApp);

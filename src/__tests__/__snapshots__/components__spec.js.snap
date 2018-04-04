@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`todoApp should render correctly 1`] = `
+<article
+  className="todoList"
+>
+  <form
+    action=""
+    onSubmit={[Function]}
+  >
+    <input
+      type="text"
+    />
+    <button
+      type="submit"
+    >
+      Add task
+    </button>
+  </form>
+  <ul />
+</article>
+`;

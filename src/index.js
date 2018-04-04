@@ -1,31 +1,18 @@
 import React from 'react';
-import {counter, addCounter, removeCounter, incrementCounter} from './lib';
-
-import { createStore } from 'redux';
+//import { counter, addCounter, removeCounter, incrementCounter } from './reducers';
+import { TodoApp } from './components';
 import ReactDOM from 'react-dom';
+import {theStore} from './reducers';
 import './index.css';
-
-const store = createStore(counter);
-const Counter = ({value, onIncrement, onDecrement}) => {
-    return (
-        <article className="counter">
-            <h1>{value}</h1>
-            <button onClick={onIncrement}>+</button>
-            <button onClick={onDecrement}>-</button>
-        </article>
-    )
-};
 
 const render = () => {
     ReactDOM.render(
-        <Counter
-            value={store.getState()}
-            onIncrement={() => store.dispatch({type: 'INCREMENT'})}
-            onDecrement={() => store.dispatch({type: 'DECREMENT'})}
+        <TodoApp
+            todos = {theStore.getState().todos}
         />,
         document.getElementById('root')
     )
 };
 
-store.subscribe(render);
+theStore.subscribe(render);
 render();
